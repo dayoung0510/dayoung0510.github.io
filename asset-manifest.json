@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/static/css/main.02c05261.chunk.css",
+    "main.js": "/static/js/main.80016f97.chunk.js",
+    "main.js.map": "/static/js/main.80016f97.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.916257ec.js",
+    "runtime-main.js.map": "/static/js/runtime-main.916257ec.js.map",
+    "static/js/2.0598c556.chunk.js": "/static/js/2.0598c556.chunk.js",
+    "static/js/2.0598c556.chunk.js.map": "/static/js/2.0598c556.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.02c05261.chunk.css.map": "/static/css/main.02c05261.chunk.css.map",
+    "static/js/2.0598c556.chunk.js.LICENSE.txt": "/static/js/2.0598c556.chunk.js.LICENSE.txt",
+    "static/media/index.css": "/static/media/SpoqaHanSansNeo-Regular.4af655e2.woff",
+    "static/media/first.4f340a58.jpg": "/static/media/first.4f340a58.jpg",
+    "static/media/hongkong.f0a52651.jpg": "/static/media/hongkong.f0a52651.jpg",
+    "static/media/second.a71a228e.jpg": "/static/media/second.a71a228e.jpg",
+    "static/media/tree_video2.b811da26.mp4": "/static/media/tree_video2.b811da26.mp4"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.916257ec.js",
+    "static/js/2.0598c556.chunk.js",
+    "static/css/main.02c05261.chunk.css",
+    "static/js/main.80016f97.chunk.js"
+  ]
+}
