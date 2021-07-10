@@ -3,6 +3,7 @@ import { useHistory, Route, Switch } from 'react-router-dom';
 import NavBar from 'components/organisms/NavBar';
 import Home from 'pages/Home';
 import Profile from 'pages/Profile';
+import Todolist from 'pages/Todolist';
 
 const Layout: React.FC = () => {
   const history = useHistory();
@@ -13,6 +14,7 @@ const Layout: React.FC = () => {
         <Switch>
           <Route path="/home" component={Home} />
           <Route path="/profile" exact component={Profile} />
+          <Route path="/todolist" exact component={Todolist} />
         </Switch>
       </div>
     </div>
