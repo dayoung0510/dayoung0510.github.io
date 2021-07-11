@@ -1,5 +1,5 @@
 export const seoul1991 = {
-  body: '#fcfcfc',
+  body: 'beige',
   text: '#363537',
   toggleBackground: '#fcfcfc',
   mainColor: '#e6328d',

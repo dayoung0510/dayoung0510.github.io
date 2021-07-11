@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import styled, { css, ThemeProvider } from 'styled-components';
+import React, { useContext, useState } from 'react';
+import styled, { css } from 'styled-components';
 import { useHistory } from 'react-router-dom';
 import ArrowLeftIcon from '@material-ui/icons/ArrowLeft';
 import ArrowRightIcon from '@material-ui/icons/ArrowRight';
@@ -8,6 +8,7 @@ import Seoul1991 from 'assets/images/second.jpg';
 import Hongkong from 'assets/images/hongkong.jpg';
 import TreeVideo from 'assets/images/tree_video2.mp4';
 import { WholeDiv, CircleButton, ArrowDiv, Video } from './styles';
+import { ThemeContext } from '../../App';
 
 const BackgroundImgs = [
   { type: 'pic', src: Seoul1991, theme: 'seoul1991' },
@@ -36,7 +37,9 @@ const CenterDiv = styled.div<Props>`
 const Cover: React.FC = () => {
   const history = useHistory();
   const [state, setState] = useState(0);
-  const [theme, setTheme] = useState(BackgroundImgs[0].theme);
+  const { theme, toggleTheme } = useContext(ThemeContext);
+
+  console.log('theme', theme);
 
   const maxStage = BackgroundImgs.length - 1;
 
@@ -48,35 +51,35 @@ const Cover: React.FC = () => {
           : (prev + addValue) % BackgroundImgs.length;
       return newState;
     });
-
-    setTheme(BackgroundImgs[state].theme);
   };
 
   return (
-    <ThemeProvider theme={theme}>
-      <WholeDiv>
-        {BackgroundImgs[state].type === 'video' && (
-          <Video loop autoPlay muted>
-            <source src={TreeVideo} type="video/mp4" />
-            <track src="" kind="captions" label="captions" />
-          </Video>
-        )}
+    <WholeDiv>
+      {BackgroundImgs[state].type === 'video' && (
+        <Video loop autoPlay muted>
+          <source src={TreeVideo} type="video/mp4" />
+          <track src="" kind="captions" label="captions" />
+        </Video>
+      )}
 
-        <ArrowDiv style={{ left: 0 }}>
-          <ArrowLeftIcon onClick={() => handlePage(-1)} />
-        </ArrowDiv>
+      <ArrowDiv style={{ left: 0 }}>
+        <ArrowLeftIcon onClick={() => handlePage(-1)} />
+      </ArrowDiv>
 
-        <CenterDiv stage={state}>
-          <CircleButton onClick={() => history.push('/home')}>
-            1991, Seoul
-          </CircleButton>
-        </CenterDiv>
+      <CenterDiv stage={state}>
+        <CircleButton onClick={() => history.push('/home')}>
+          1991, Seoul
+        </CircleButton>
+      </CenterDiv>
 
-        <ArrowDiv style={{ right: 0 }}>
-          <ArrowRightIcon onClick={() => handlePage(1)} />
-        </ArrowDiv>
-      </WholeDiv>
-    </ThemeProvider>
+      <ArrowDiv style={{ right: 0 }}>
+        <ArrowRightIcon
+          onClick={() => {
+            handlePage(1);
+          }}
+        />
+      </ArrowDiv>
+    </WholeDiv>
   );
 };
 

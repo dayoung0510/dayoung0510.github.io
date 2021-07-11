@@ -6,7 +6,6 @@ import Profile from 'pages/Profile';
 import Todolist from 'pages/Todolist';
 
 const Layout: React.FC = () => {
-  const history = useHistory();
   return (
     <div>
       <NavBar />

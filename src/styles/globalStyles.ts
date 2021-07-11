@@ -1,19 +1,31 @@
 import { createGlobalStyle } from 'styled-components';
+import reset from 'styled-reset';
 
-const GlobalStyle = createGlobalStyle`
+interface ThemeInterface {
+  theme: {
+    body: string;
+    text: string;
+    toggleBackground: string;
+    mainColor: string;
+    navBar: string;
+  };
+}
 
+const GlobalStyle = createGlobalStyle<ThemeInterface>`
+${reset}
   html {
     font-size: 20px;
   }
   html,
   body {
-    color: #717578;
     font-family: 'spoqa', sans-serif;
     font-weight: 400;
     overflow: hidden;
     padding: 0;
     margin: 0;
-    font-size: 20px;
+    font-size: 16px;
+    background: ${({ theme }) => theme.body};
+    color:${({ theme }) => theme.text}
   }
 
   * {
@@ -28,6 +40,7 @@ const GlobalStyle = createGlobalStyle`
   button {
   font-family: inherit;
   letter-spacing: -0.12px;
+  cursor: pointer;
   }
 
   button {
@@ -35,6 +48,10 @@ const GlobalStyle = createGlobalStyle`
     border: 0;
     cursor: pointer;
   }
+  ol, ul, li {
+    list-style: none;
+  }
+
 `;
 
 export default GlobalStyle;
