@@ -1,10 +1,17 @@
-import { DefaultTheme } from 'styled-components';
-import { palette } from './colors';
+export const seoul1991 = {
+  body: '#fcfcfc',
+  text: '#363537',
+  toggleBackground: '#fcfcfc',
+  mainColor: '#e6328d',
+  navBar: '#fcfcfc',
+};
 
-export interface Theme extends DefaultTheme {
-  palette: Record<string, string>;
-}
+export const darkTheme = {
+  body: '#252424',
+  text: '#fcfcfc',
+  toggleBackground: '#3b3b3b',
+  mainColor: '#fcfcfc',
+  navBar: '#303030',
+};
 
-const defaultTheme: Theme = { palette };
-
-export default defaultTheme;
+export type Theme = typeof seoul1991;

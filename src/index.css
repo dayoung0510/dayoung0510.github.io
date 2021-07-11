@@ -47,3 +47,12 @@
   src: local(※),
     url(assets/fonts/spoqa/SpoqaHanSansNeo-Bold.woff) format('woff');
 }
+
+/* 어비얀느체 */
+@font-face {
+  font-family: 'yan';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_five@.2.0/UhBeeYanNeu.woff')
+    format('woff');
+  font-weight: normal;
+  font-style: normal;
+}

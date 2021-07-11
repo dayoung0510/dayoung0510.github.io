@@ -18,7 +18,7 @@ const NavBar: React.FC = () => {
         투두(버킷)리스트
       </button>
       <button type="button">다이어리</button>
-      <button type="button">캘린더(기한있는약속표기,참잘했어요)</button>
+      <button type="button">캘린더(옛날서울달력)</button>
       <button type="button">작업물(포폴)</button>
     </div>
   );
