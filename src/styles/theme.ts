@@ -1,17 +1,39 @@
 export const seoul1991 = {
-  body: 'beige',
+  bgColor: 'beige',
   text: '#363537',
-  toggleBackground: '#fcfcfc',
-  mainColor: '#e6328d',
-  navBar: '#fcfcfc',
+  primary: '#e6328d',
+  secondary: '#fcfcfc',
+  tertiary: 'red',
 };
 
-export const darkTheme = {
-  body: '#252424',
+export const neonHK = {
+  bgColor: '#252424',
   text: '#fcfcfc',
-  toggleBackground: '#3b3b3b',
-  mainColor: '#fcfcfc',
-  navBar: '#303030',
+  primary: '#fcfcfc',
+  secondary: '#303030',
+  tertiary: 'blue',
 };
 
-export type Theme = typeof seoul1991;
+export const vintageUSA = {
+  bgColor: 'red',
+  text: 'black',
+  primary: 'beige',
+  secondary: 'pink',
+  tertiary: 'green',
+};
+
+export type Theme = {
+  bgColor: string;
+  text: string;
+  primary: string;
+  secondary: string;
+  tertiary: string;
+};
+
+export const defaultValue = {
+  bgColor: '',
+  text: '',
+  primary: '',
+  secondary: '',
+  tertiary: '',
+};

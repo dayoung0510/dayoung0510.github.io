@@ -1,14 +1,9 @@
 import { createGlobalStyle } from 'styled-components';
 import reset from 'styled-reset';
+import { Theme } from 'styles/theme';
 
 interface ThemeInterface {
-  theme: {
-    body: string;
-    text: string;
-    toggleBackground: string;
-    mainColor: string;
-    navBar: string;
-  };
+  theme: Theme;
 }
 
 const GlobalStyle = createGlobalStyle<ThemeInterface>`
@@ -18,14 +13,14 @@ ${reset}
   }
   html,
   body {
+    background-color: ${({ theme }) => theme.bgColor};
+    color: ${({ theme }) => theme.text};
     font-family: 'spoqa', sans-serif;
     font-weight: 400;
     overflow: hidden;
     padding: 0;
     margin: 0;
     font-size: 16px;
-    background: ${({ theme }) => theme.body};
-    color:${({ theme }) => theme.text}
   }
 
   * {

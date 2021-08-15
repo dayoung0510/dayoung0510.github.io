@@ -1,4 +1,6 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
+import { ThemeContext } from 'App';
+import { seoul1991, vintageUSA, neonHK, Theme } from 'styles/theme';
 import styled, { css } from 'styled-components';
 import { useHistory } from 'react-router-dom';
 import ArrowLeftIcon from '@material-ui/icons/ArrowLeft';
@@ -8,13 +10,12 @@ import Seoul1991 from 'assets/images/second.jpg';
 import Hongkong from 'assets/images/hongkong.jpg';
 import TreeVideo from 'assets/images/tree_video2.mp4';
 import { WholeDiv, CircleButton, ArrowDiv, Video } from './styles';
-import { ThemeContext } from '../../App';
 
 const BackgroundImgs = [
-  { type: 'pic', src: Seoul1991, theme: 'seoul1991' },
-  { type: 'video', src: TreeVideo, theme: 'treeVideo' },
-  { type: 'pic', src: First, theme: 'first' },
-  { type: 'pic', src: Hongkong, theme: 'hongkong' },
+  { type: 'pic', src: Seoul1991, theme: seoul1991 },
+  { type: 'video', src: TreeVideo, theme: neonHK },
+  { type: 'pic', src: First, theme: vintageUSA },
+  { type: 'pic', src: Hongkong, theme: neonHK },
 ];
 
 type Props = {
@@ -37,9 +38,6 @@ const CenterDiv = styled.div<Props>`
 const Cover: React.FC = () => {
   const history = useHistory();
   const [state, setState] = useState(0);
-  const { theme, toggleTheme } = useContext(ThemeContext);
-
-  console.log('theme', theme);
 
   const maxStage = BackgroundImgs.length - 1;
 
@@ -52,6 +50,12 @@ const Cover: React.FC = () => {
       return newState;
     });
   };
+
+  const { theme, changeTheme } = useContext(ThemeContext);
+
+  useEffect(() => {
+    changeTheme(BackgroundImgs[state].theme);
+  });
 
   return (
     <WholeDiv>
