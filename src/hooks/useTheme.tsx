@@ -19,9 +19,12 @@ const useTheme = () => {
       : window.localStorage.setItem('theme', 'vintageUSA');
   };
 
-  const changeTheme = () => {
-    return theme === seoul1991 ? setMode(vintageUSA) : setMode(seoul1991);
-  };
+  console.log('useTheme에서 ', theme);
+
+  // const changeTheme = () => {
+  //   setTheme(vintageUSA);
+  //   // return theme === seoul1991 ? setMode(vintageUSA) : setMode(seoul1991);
+  // };
 
   useEffect(() => {
     const localTheme = window.localStorage.getItem('theme');
@@ -34,7 +37,7 @@ const useTheme = () => {
     // }
   }, []);
 
-  return { theme, changeTheme };
+  return { theme, setTheme };
 };
 
 export default useTheme;

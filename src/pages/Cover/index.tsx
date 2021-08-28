@@ -53,7 +53,9 @@ const Cover: React.FC = () => {
 
   const currentTheme = BackgroundImgs[state].title;
 
-  const { theme, changeTheme } = useContext(ThemeContext);
+  const { theme, setTheme } = useContext(ThemeContext);
+
+  console.log('cover에서 ', theme);
 
   // useEffect(() => {
   //   window.localStorage.setItem('theme', currentTheme);
@@ -83,7 +85,7 @@ const Cover: React.FC = () => {
         <ArrowRightIcon
           onClick={() => {
             handlePage(1);
-            changeTheme(BackgroundImgs[state].theme);
+            setTheme(BackgroundImgs[state].theme);
           }}
         />
       </ArrowDiv>

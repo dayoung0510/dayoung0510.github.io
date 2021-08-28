@@ -9,19 +9,20 @@ import Home from 'pages/Home';
 
 interface ContextProps {
   theme: Theme;
-  changeTheme: React.Dispatch<React.SetStateAction<Theme>>;
+  setTheme: React.Dispatch<React.SetStateAction<Theme>>;
 }
 
 export const ThemeContext = createContext<ContextProps>({
   theme: defaultValue,
-  changeTheme: () => {},
+  setTheme: () => {},
 });
 
 const App: React.FC = () => {
-  const { theme, changeTheme } = useTheme();
+  const { theme, setTheme } = useTheme();
+  console.log('app에서', theme);
 
   return (
-    <ThemeContext.Provider value={{ theme, changeTheme }}>
+    <ThemeContext.Provider value={{ theme, setTheme }}>
       <GlobalStyle theme={theme} />
       <Switch>
         <Route path="/" exact component={Cover} />
