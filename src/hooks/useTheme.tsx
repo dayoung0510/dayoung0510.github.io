@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { ThemeContext } from 'App';
 import {
   Theme,
   seoul1991,
@@ -8,12 +9,31 @@ import {
 } from '../styles/theme';
 
 const useTheme = () => {
-  const [theme, setTheme] = useState<Theme>(defaultValue);
+  const [theme, setTheme] = useState<Theme>(seoul1991);
+
+  const setMode = (mode: Theme) => {
+    console.log('셋모드');
+    setTheme(mode);
+    return mode === seoul1991
+      ? window.localStorage.setItem('theme', 'seoul1991')
+      : window.localStorage.setItem('theme', 'vintageUSA');
+  };
 
   const changeTheme = () => {
-    setTheme(theme);
-    console.log('체체체체첸지', theme);
+    return theme === seoul1991 ? setMode(vintageUSA) : setMode(seoul1991);
   };
+
+  useEffect(() => {
+    const localTheme = window.localStorage.getItem('theme');
+    // if (localTheme !== null) {
+    // if (localTheme === 'seoul1991') {
+    //   setTheme(seoul1991);
+    // } else {
+    //   setTheme(vintageUSA);
+    // }
+    // }
+  }, []);
+
   return { theme, changeTheme };
 };
 

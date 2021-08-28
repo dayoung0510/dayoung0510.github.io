@@ -1,5 +1,5 @@
 export const seoul1991 = {
-  bgColor: 'beige',
+  bgColor: 'red',
   text: '#363537',
   primary: '#e6328d',
   secondary: '#fcfcfc',
@@ -7,7 +7,7 @@ export const seoul1991 = {
 };
 
 export const neonHK = {
-  bgColor: '#252424',
+  bgColor: 'orange',
   text: '#fcfcfc',
   primary: '#fcfcfc',
   secondary: '#303030',
@@ -15,7 +15,7 @@ export const neonHK = {
 };
 
 export const vintageUSA = {
-  bgColor: 'red',
+  bgColor: 'yellow',
   text: 'black',
   primary: 'beige',
   secondary: 'pink',

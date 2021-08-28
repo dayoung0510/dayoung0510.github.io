@@ -12,10 +12,10 @@ import TreeVideo from 'assets/images/tree_video2.mp4';
 import { WholeDiv, CircleButton, ArrowDiv, Video } from './styles';
 
 const BackgroundImgs = [
-  { type: 'pic', src: Seoul1991, theme: seoul1991 },
-  { type: 'video', src: TreeVideo, theme: neonHK },
-  { type: 'pic', src: First, theme: vintageUSA },
-  { type: 'pic', src: Hongkong, theme: neonHK },
+  { type: 'pic', src: Seoul1991, title: 'seoul1991', theme: seoul1991 },
+  { type: 'video', src: TreeVideo, title: 'neonHK ', theme: neonHK },
+  { type: 'pic', src: First, title: 'vintageUSA', theme: vintageUSA },
+  { type: 'pic', src: Hongkong, title: 'neonHK', theme: neonHK },
 ];
 
 type Props = {
@@ -51,11 +51,14 @@ const Cover: React.FC = () => {
     });
   };
 
+  const currentTheme = BackgroundImgs[state].title;
+
   const { theme, changeTheme } = useContext(ThemeContext);
 
-  useEffect(() => {
-    changeTheme(BackgroundImgs[state].theme);
-  });
+  // useEffect(() => {
+  //   window.localStorage.setItem('theme', currentTheme);
+  //   changeTheme(vintageUSA);
+  // }, []);
 
   return (
     <WholeDiv>
@@ -80,6 +83,7 @@ const Cover: React.FC = () => {
         <ArrowRightIcon
           onClick={() => {
             handlePage(1);
+            changeTheme(BackgroundImgs[state].theme);
           }}
         />
       </ArrowDiv>
