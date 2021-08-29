@@ -19,7 +19,6 @@ export const ThemeContext = createContext<ContextProps>({
 
 const App: React.FC = () => {
   const { theme, setTheme } = useTheme();
-  console.log('app에서', theme);
 
   return (
     <ThemeContext.Provider value={{ theme, setTheme }}>

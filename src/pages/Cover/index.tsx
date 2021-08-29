@@ -1,22 +1,12 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { ThemeContext } from 'App';
-import { seoul1991, vintageUSA, neonHK, Theme } from 'styles/theme';
+import { BackgroundImgs } from 'styles/theme';
 import styled, { css } from 'styled-components';
 import { useHistory } from 'react-router-dom';
 import ArrowLeftIcon from '@material-ui/icons/ArrowLeft';
 import ArrowRightIcon from '@material-ui/icons/ArrowRight';
-import First from 'assets/images/first.jpg';
-import Seoul1991 from 'assets/images/second.jpg';
-import Hongkong from 'assets/images/hongkong.jpg';
 import TreeVideo from 'assets/images/tree_video2.mp4';
 import { WholeDiv, CircleButton, ArrowDiv, Video } from './styles';
-
-const BackgroundImgs = [
-  { type: 'pic', src: Seoul1991, title: 'seoul1991', theme: seoul1991 },
-  { type: 'video', src: TreeVideo, title: 'neonHK ', theme: neonHK },
-  { type: 'pic', src: First, title: 'vintageUSA', theme: vintageUSA },
-  { type: 'pic', src: Hongkong, title: 'neonHK', theme: neonHK },
-];
 
 type Props = {
   stage: number;
@@ -38,6 +28,7 @@ const CenterDiv = styled.div<Props>`
 const Cover: React.FC = () => {
   const history = useHistory();
   const [state, setState] = useState(0);
+  const { theme, setTheme } = useContext(ThemeContext);
 
   const maxStage = BackgroundImgs.length - 1;
 
@@ -51,16 +42,18 @@ const Cover: React.FC = () => {
     });
   };
 
-  const currentTheme = BackgroundImgs[state].title;
+  const setLocal = (item: string) => {
+    window.localStorage.setItem('theme', item);
+  };
 
-  const { theme, setTheme } = useContext(ThemeContext);
-
-  console.log('cover에서 ', theme);
-
-  // useEffect(() => {
-  //   window.localStorage.setItem('theme', currentTheme);
-  //   changeTheme(vintageUSA);
-  // }, []);
+  useEffect(() => {
+    if (window.localStorage.getItem('theme') === null) {
+      window.localStorage.setItem('theme', BackgroundImgs[state].title);
+    } else {
+      setLocal(BackgroundImgs[state].title);
+      setTheme(BackgroundImgs[state].theme);
+    }
+  }, [state, setTheme]);
 
   return (
     <WholeDiv>
@@ -72,12 +65,16 @@ const Cover: React.FC = () => {
       )}
 
       <ArrowDiv style={{ left: 0 }}>
-        <ArrowLeftIcon onClick={() => handlePage(-1)} />
+        <ArrowLeftIcon
+          onClick={() => {
+            handlePage(-1);
+          }}
+        />
       </ArrowDiv>
 
       <CenterDiv stage={state}>
         <CircleButton onClick={() => history.push('/home')}>
-          1991, Seoul
+          {BackgroundImgs[state].title}
         </CircleButton>
       </CenterDiv>
 
@@ -85,7 +82,6 @@ const Cover: React.FC = () => {
         <ArrowRightIcon
           onClick={() => {
             handlePage(1);
-            setTheme(BackgroundImgs[state].theme);
           }}
         />
       </ArrowDiv>
