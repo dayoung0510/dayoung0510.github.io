@@ -7,6 +7,7 @@ import Profile from 'pages/Profile';
 import Todolist from 'pages/Todolist';
 import ThemeBorder from 'components/atoms/ThemeBorder';
 import ThingsLogo from 'assets/images/things_logo.png';
+import ThingsLogo2 from 'assets/images/things_logo2.png';
 
 const CenterDiv = styled.div`
   width: calc(100% - 10rem);
@@ -16,22 +17,23 @@ const CenterDiv = styled.div`
 `;
 
 const LogoDiv = styled.div`
-  width: 10rem;
-  height: 3rem;
-  padding: 1rem 0;
+  width: 50%;
+  height: 5rem;
+  padding-top: 1rem;
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 0 auto;
   img {
-    width: 100%;
+    width: auto;
+    height: 100%;
   }
 `;
 
 const ContentDiv = styled.div`
   width: 100%;
   height: calc(100% - 3rem);
-  padding: 2rem;
+  padding: 1rem 2rem 4rem 2rem;
 `;
 
 const Layout: React.FC = () => {
@@ -41,7 +43,7 @@ const Layout: React.FC = () => {
 
       <CenterDiv>
         <LogoDiv>
-          <img src={ThingsLogo} alt="" />
+          <img src={ThingsLogo2} alt="" />
         </LogoDiv>
         <ContentDiv>
           <ThemeBorder>

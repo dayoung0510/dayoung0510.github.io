@@ -9,12 +9,12 @@ type ThemeBorderType = {
 const Border = styled.div<ThemeBorderType>`
   width: 100%;
   height: 100%;
-  padding: 2rem;
+  padding: 2rem 4rem;
 
   border-width: 3px 3px 5px 5px;
   border-radius: 3% 92% 3% 95%/95% 4% 94% 5%;
   transform: rotate(-1deg);
-  background: #fffff0;
+  background: #eeeeda;
   border: solid black;
   border-color: #222;
   overflow: auto;
