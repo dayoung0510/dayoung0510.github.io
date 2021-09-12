@@ -4,6 +4,7 @@ import Hongkong from 'assets/images/hongkong.jpg';
 import TreeVideo from 'assets/images/tree_video2.mp4';
 
 export const seoul1991 = {
+  title: 'seoul1991',
   bgColor: 'linear-gradient(0deg, rgba(55,38,97,1) 0%, rgba(78,48,98,1) 100%)',
   text: '#363537',
   primary: '#e6328d',
@@ -12,6 +13,7 @@ export const seoul1991 = {
 };
 
 export const tree = {
+  title: 'tree',
   bgColor: 'green',
   text: '#fcfcfc',
   primary: '#fcfcfc',
@@ -20,6 +22,7 @@ export const tree = {
 };
 
 export const vintageUSA = {
+  title: 'vintageUSA',
   bgColor: 'pink',
   text: 'black',
   primary: 'beige',
@@ -28,6 +31,7 @@ export const vintageUSA = {
 };
 
 export type Theme = {
+  title: string;
   bgColor: string;
   text: string;
   primary: string;
@@ -36,6 +40,7 @@ export type Theme = {
 };
 
 export const defaultValue = {
+  title: '',
   bgColor: '',
   text: '',
   primary: '',

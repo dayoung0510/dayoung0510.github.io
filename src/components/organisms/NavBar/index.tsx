@@ -8,6 +8,10 @@ const LeftDiv = styled.div`
   width: 5rem;
   left: 0;
   padding: 2rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 `;
 
 const RightDiv = styled.div`
@@ -16,15 +20,15 @@ const RightDiv = styled.div`
   width: 5rem;
   right: 0;
   padding: 2rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 `;
 
 const ButtonDiv = styled.div`
   width: 4rem;
   height: 4rem;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 `;
 
 const NavBar: React.FC = () => {
@@ -32,11 +36,6 @@ const NavBar: React.FC = () => {
   return (
     <>
       <LeftDiv>
-        <ButtonDiv>
-          <button type="button" onClick={() => history.push('/')}>
-            커버
-          </button>
-        </ButtonDiv>
         <ButtonDiv>
           <button type="button" onClick={() => history.push('/home')}>
             홈
@@ -61,7 +60,9 @@ const NavBar: React.FC = () => {
       </LeftDiv>
       <RightDiv>
         <ButtonDiv>
-          <button type="button">sdf</button>
+          <button type="button" onClick={() => history.push('/')}>
+            커버
+          </button>
         </ButtonDiv>
       </RightDiv>
     </>

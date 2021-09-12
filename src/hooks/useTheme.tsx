@@ -4,8 +4,6 @@ import { Theme, defaultValue, BackgroundImgs } from '../styles/theme';
 const useTheme = () => {
   const [theme, setTheme] = useState<Theme>(defaultValue);
 
-  console.log('theme!?', theme);
-
   const localTheme = window.localStorage.getItem('theme');
   useEffect(() => {
     if (localTheme === null) {
