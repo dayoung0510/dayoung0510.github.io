@@ -13,7 +13,7 @@ ${reset}
   }
   html,
   body {
-    background-color: ${({ theme }) => theme.bgColor};
+    background: ${({ theme }) => theme.bgColor};
     color: ${({ theme }) => theme.text};
     font-family: 'spoqa', sans-serif;
     font-weight: 400;
@@ -21,6 +21,9 @@ ${reset}
     padding: 0;
     margin: 0;
     font-size: 16px;
+    height: 100vh;
+    width: 100vw;
+    position: relative;
   }
 
   * {
@@ -28,14 +31,12 @@ ${reset}
   }
 
   body,
-  body *,
   input,
   textarea,
   ::selection,
   button {
   font-family: inherit;
   letter-spacing: -0.12px;
-  cursor: pointer;
   }
 
   button {

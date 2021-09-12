@@ -4,7 +4,7 @@ import Hongkong from 'assets/images/hongkong.jpg';
 import TreeVideo from 'assets/images/tree_video2.mp4';
 
 export const seoul1991 = {
-  bgColor: 'skyblue',
+  bgColor: 'linear-gradient(0deg, rgba(55,38,97,1) 0%, rgba(78,48,98,1) 100%)',
   text: '#363537',
   primary: '#e6328d',
   secondary: '#fcfcfc',
