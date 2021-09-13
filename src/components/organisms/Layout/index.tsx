@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, useHistory } from 'react-router-dom';
 import NavBar from 'components/organisms/NavBar';
 import Home from 'pages/Home';
 import Profile from 'pages/Profile';
@@ -26,7 +26,7 @@ const LogoDiv = styled.div`
   margin: 0 auto;
   img {
     width: auto;
-    height: 100%;
+    height: 60%;
   }
 `;
 
@@ -37,12 +37,17 @@ const ContentDiv = styled.div`
 `;
 
 const Layout: React.FC = () => {
+  const history = useHistory();
+
   return (
     <>
       <NavBar />
 
       <CenterDiv>
-        <LogoDiv>
+        <LogoDiv
+          onClick={() => history.push('/home')}
+          style={{ cursor: 'pointer' }}
+        >
           <img src={ThingsLogo2} alt="" />
         </LogoDiv>
         <ContentDiv>

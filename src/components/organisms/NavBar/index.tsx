@@ -37,11 +37,6 @@ const NavBar: React.FC = () => {
     <>
       <LeftDiv>
         <ButtonDiv>
-          <button type="button" onClick={() => history.push('/home')}>
-            홈
-          </button>
-        </ButtonDiv>
-        <ButtonDiv>
           <button type="button" onClick={() => history.push('/profile')}>
             프로필
           </button>

@@ -2,30 +2,41 @@ import React from 'react';
 import styled, { css, FlattenInterpolation } from 'styled-components';
 import useTheme from 'hooks/useTheme';
 
-type ThemeBorderType = {
-  theme: string;
+const selectThemeBorder = (theme: string) => {
+  switch (theme) {
+    case 'cartoonNight':
+      return css`
+        border-width: 3px 3px 5px 5px;
+        border-radius: 3% 92% 3% 95%/95% 4% 94% 5%;
+        transform: rotate(-1deg);
+        background: #eeeeda;
+        border: solid black;
+        border-color: #222;
+        overflow: auto;
+      `;
+
+    case 'vintageUSA':
+      return css`
+        border: 1px solid red;
+      `;
+
+    default:
+      return css``;
+  }
 };
 
-const Border = styled.div<ThemeBorderType>`
+const Border = styled.div<{ themeBorder: string }>`
   width: 100%;
   height: 100%;
   padding: 2rem 4rem;
 
-  border-width: 3px 3px 5px 5px;
-  border-radius: 3% 92% 3% 95%/95% 4% 94% 5%;
-  transform: rotate(-1deg);
-  background: #eeeeda;
-  border: solid black;
-  border-color: #222;
-  overflow: auto;
+  ${({ themeBorder }) => selectThemeBorder(themeBorder)}
 `;
 
-const CenterBorder: React.FC = ({ children }) => {
+const ThemeBorder: React.FC = ({ children }) => {
   const { theme } = useTheme();
 
-  console.log(theme.title);
-
-  return <Border>{children}</Border>;
+  return <Border themeBorder={theme.title}>{children}</Border>;
 };
 
-export default CenterBorder;
+export default ThemeBorder;
