@@ -52,6 +52,11 @@ const NavBar: React.FC = () => {
         <ButtonDiv>
           <button type="button">작업물(포폴)</button>
         </ButtonDiv>
+        <ButtonDiv>
+          <button type="button" onClick={() => history.push('/login')}>
+            로그인
+          </button>
+        </ButtonDiv>
       </LeftDiv>
       <RightDiv>
         <ButtonDiv>

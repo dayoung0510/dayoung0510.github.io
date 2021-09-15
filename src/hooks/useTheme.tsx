@@ -8,8 +8,9 @@ const useTheme = () => {
   useEffect(() => {
     if (localTheme === null) {
       window.localStorage.setItem('theme', BackgroundImgs[0].title);
+    } else {
+      setTheme(BackgroundImgs.find((i) => i.title === localTheme)!.theme);
     }
-    setTheme(BackgroundImgs.find((i) => i.title === localTheme)!.theme);
   }, [localTheme]);
 
   return { theme, setTheme };

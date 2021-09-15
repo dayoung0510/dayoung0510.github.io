@@ -5,6 +5,7 @@ import NavBar from 'components/organisms/NavBar';
 import Home from 'pages/Home';
 import Profile from 'pages/Profile';
 import Todolist from 'pages/Todolist';
+import Login from 'pages/Login';
 import ThemeBorder from 'components/atoms/ThemeBorder';
 import ThingsLogo from 'assets/images/things_logo.png';
 import ThingsLogo2 from 'assets/images/things_logo2.png';
@@ -18,7 +19,7 @@ const CenterDiv = styled.div`
 
 const LogoDiv = styled.div`
   width: 50%;
-  height: 5rem;
+  height: 4rem;
   padding-top: 1rem;
   display: flex;
   justify-content: center;
@@ -33,7 +34,7 @@ const LogoDiv = styled.div`
 const ContentDiv = styled.div`
   width: 100%;
   height: calc(100% - 3rem);
-  padding: 1rem 2rem 4rem 2rem;
+  padding: 1rem 2rem 3rem 2rem;
 `;
 
 const Layout: React.FC = () => {
@@ -56,6 +57,7 @@ const Layout: React.FC = () => {
               <Route path="/home" component={Home} />
               <Route path="/profile" exact component={Profile} />
               <Route path="/todolist" exact component={Todolist} />
+              <Route path="/login" exact component={Login} />
             </Switch>
           </ThemeBorder>
         </ContentDiv>
