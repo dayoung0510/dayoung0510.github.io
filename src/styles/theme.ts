@@ -6,7 +6,7 @@ import TreeVideo from 'assets/images/tree_video2.mp4';
 export const cartoonNight = {
   title: 'cartoonNight',
   bgColor:
-    'linear-gradient(0deg, rgba(17,22,50,1) 0%, rgba(44,44,96,1) 17%, rgba(77,48,98,1) 100%);',
+    'linear-gradient(0deg, rgba(17,22,50,1) 0%, rgba(44,44,96,1) 40%, rgba(77,48,98,1) 100%);',
   text: '#363537',
   primary: '#4d3062',
   secondary: '#DFAC3D',

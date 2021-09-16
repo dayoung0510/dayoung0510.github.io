@@ -7,7 +7,6 @@ import Profile from 'pages/Profile';
 import Todolist from 'pages/Todolist';
 import Login from 'pages/Login';
 import ThemeBorder from 'components/atoms/ThemeBorder';
-import ThingsLogo from 'assets/images/things_logo.png';
 import ThingsLogo2 from 'assets/images/things_logo2.png';
 
 const CenterDiv = styled.div`

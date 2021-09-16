@@ -1,5 +1,5 @@
 import React from 'react';
-import styled, { css, FlattenInterpolation } from 'styled-components';
+import styled, { css } from 'styled-components';
 import useTheme from 'hooks/useTheme';
 
 const selectThemeBorder = (theme: string) => {
@@ -7,8 +7,7 @@ const selectThemeBorder = (theme: string) => {
     case 'cartoonNight':
       return css`
         border-width: 3px 3px 5px 5px;
-        border-radius: 3% 92% 3% 95%/95% 4% 94% 5%;
-        transform: rotate(-1deg);
+        border-radius: 3% 30% 3% 25%/95% 4% 94% 5%;
         background: #eeeeda;
         border: solid black;
         border-color: #222;

@@ -1,5 +1,6 @@
 import React, { createContext } from 'react';
 import { Route, Switch } from 'react-router-dom';
+
 import GlobalStyle from 'styles/globalStyles';
 import { Theme, defaultValue } from 'styles/theme';
 import useTheme from 'hooks/useTheme';

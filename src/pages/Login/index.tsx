@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
-import { supabase } from '../../../supabaseClient';
+import { supabase } from 'supabaseClient';
+import { FlexBoth } from 'components/atoms/commons/Divs';
+import { Input } from 'components/atoms/commons/Inputs';
 
 const Login: React.FC = () => {
   const [loading, setLoading] = useState(false);
-  const [email, setEmail] = useState('');
+  const [inputEmail, setInputEmail] = useState('');
 
   const handleLogin = async (email: string) => {
     try {
@@ -21,35 +23,30 @@ const Login: React.FC = () => {
   };
 
   return (
-    <div className="row flex flex-center">
-      <div className="col-6 form-widget">
-        <h1 className="header">Supabase + React</h1>
-        <p className="description">
-          Sign in via magic link with your email below
-        </p>
+    <FlexBoth style={{ height: '100%' }}>
+      <div>
         <div>
-          <input
-            className="inputField"
+          <Input
             type="email"
             placeholder="Your email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            value={inputEmail}
+            onChange={(e) => setInputEmail(e.target.value)}
           />
         </div>
         <div>
           <button
+            type="button"
             onClick={(e) => {
               e.preventDefault();
-              handleLogin(email);
+              handleLogin(inputEmail);
             }}
-            className={'button block'}
             disabled={loading}
           >
             {loading ? <span>Loading</span> : <span>Send magic link</span>}
           </button>
         </div>
       </div>
-    </div>
+    </FlexBoth>
   );
 };
 

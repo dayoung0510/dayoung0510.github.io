@@ -1,7 +1,12 @@
 import React from 'react';
+import Doit from 'assets/images/doit.png';
 
 const Home: React.FC = () => {
-  return <div>여기는 메인페이지</div>;
+  return (
+    <div>
+      <img src={Doit} alt="" />
+    </div>
+  );
 };
 
 export default Home;
