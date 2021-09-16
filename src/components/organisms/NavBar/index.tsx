@@ -54,7 +54,7 @@ const NavBar: React.FC = () => {
         </ButtonDiv>
         <ButtonDiv>
           <button type="button" onClick={() => history.push('/login')}>
-            로그인
+            관리자
           </button>
         </ButtonDiv>
       </LeftDiv>
