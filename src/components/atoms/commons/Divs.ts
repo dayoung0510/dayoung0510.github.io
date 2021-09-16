@@ -19,3 +19,10 @@ export const FlexBoth = styled.div`
   justify-content: center;
   align-items: center;
 `;
+
+export const FlexColumn = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+`;

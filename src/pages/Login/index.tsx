@@ -1,51 +1,15 @@
-import React, { useState } from 'react';
-import { supabase } from 'supabaseClient';
-import { FlexBoth } from 'components/atoms/commons/Divs';
-import { Input } from 'components/atoms/commons/Inputs';
+import React from 'react';
+import SignUp from 'components/organisms/Auth/SignUp';
+import SignIn from 'components/organisms/Auth/SignIn';
+import { FlexBoth, FlexColumn } from 'components/atoms/commons/Divs';
+import { useAuthContext } from '../../contexts/AuthContext';
 
 const Login: React.FC = () => {
-  const [loading, setLoading] = useState(false);
-  const [inputEmail, setInputEmail] = useState('');
-
-  const handleLogin = async (email: string) => {
-    try {
-      setLoading(true);
-      const { error } = await supabase.auth.signIn({ email });
-      if (error) throw error;
-      alert('Check your email for the login link!');
-    } catch (error) {
-      if (error instanceof Error) {
-        alert(error.message);
-      }
-    } finally {
-      setLoading(false);
-    }
-  };
+  const { user } = useAuthContext();
 
   return (
     <FlexBoth style={{ height: '100%' }}>
-      <div>
-        <div>
-          <Input
-            type="email"
-            placeholder="Your email"
-            value={inputEmail}
-            onChange={(e) => setInputEmail(e.target.value)}
-          />
-        </div>
-        <div>
-          <button
-            type="button"
-            onClick={(e) => {
-              e.preventDefault();
-              handleLogin(inputEmail);
-            }}
-            disabled={loading}
-          >
-            {loading ? <span>Loading</span> : <span>Send magic link</span>}
-          </button>
-        </div>
-      </div>
+      <FlexColumn>{user ? <div>로그인되었습니다</div> : <SignIn />}</FlexColumn>
     </FlexBoth>
   );
 };

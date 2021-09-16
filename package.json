@@ -4,8 +4,11 @@
   "private": true,
   "homepage": "https://dayoung0510.github.io",
   "dependencies": {
+    "@emotion/react": "^11.4.1",
+    "@emotion/styled": "^11.3.0",
     "@material-ui/core": "^4.11.3",
     "@material-ui/icons": "^4.11.2",
+    "@mui/material": "^5.0.0",
     "@supabase/gotrue-js": "^1.18.0",
     "@supabase/supabase-js": "^1.22.6",
     "@testing-library/jest-dom": "^5.12.0",

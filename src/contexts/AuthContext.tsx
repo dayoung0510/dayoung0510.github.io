@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 import { User } from '@supabase/supabase-js';
 import { supabase } from '../supabaseClient';
 
@@ -17,8 +17,8 @@ export const AuthContextProvider: React.FC = ({ children }) => {
     const session = supabase.auth.session();
     setUser(session?.user || null);
 
-    supabase.auth.onAuthStateChange((_event, session) => {
-      setUser(session?.user || null);
+    supabase.auth.onAuthStateChange((_event, currentSession) => {
+      setUser(currentSession?.user || null);
     });
   }, []);
 
