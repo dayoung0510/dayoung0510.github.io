@@ -4,7 +4,6 @@ import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import { supabase } from '../../../supabaseClient';
 
@@ -17,15 +16,16 @@ const SignUp: React.FC<DialogProps> = ({ open, handleClose }) => {
   const [loading, setLoading] = useState(false);
   const [inputEmail, setInputEmail] = useState('');
 
-  const emailRef = useRef();
-  const passwordRef = useRef();
+  const emailRef = useRef<HTMLDivElement>(null);
+  const passwordRef = useRef<HTMLDivElement>(null);
 
-  const handleLogin = async (email: string) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     try {
       setLoading(true);
-      const { error } = await supabase.auth.signIn({ email });
+      const { error } = await supabase.auth.signUp({});
       if (error) throw error;
-      alert('Check your email for the login link!');
+      alert('요청에 실패했습니다');
     } catch (error) {
       if (error instanceof Error) {
         alert(error.message);
@@ -37,34 +37,44 @@ const SignUp: React.FC<DialogProps> = ({ open, handleClose }) => {
   };
 
   return (
-    <Dialog open={open} onClose={handleClose}>
-      <DialogTitle>관리자 등록 요청</DialogTitle>
-      <DialogContent>
-        <TextField
-          autoFocus
-          margin="dense"
-          id="name"
-          label="Email Address"
-          type="email"
-          fullWidth
-          variant="standard"
-          placeholder="관리자 이메일 등록"
-          value={inputEmail}
-          onChange={(e) => setInputEmail(e.target.value)}
-        />
-      </DialogContent>
+    <Dialog open={open} onClose={handleClose} maxWidth="xs">
+      <form onSubmit={handleSubmit}>
+        <DialogTitle>관리자 등록 요청</DialogTitle>
+        <DialogContent>
+          <TextField
+            id="email"
+            fullWidth
+            variant="standard"
+            margin="dense"
+            label="이메일주소"
+            ref={emailRef}
+          />
+          <TextField
+            id="password"
+            fullWidth
+            variant="standard"
+            margin="dense"
+            label="비밀번호"
+            type="password"
+            ref={passwordRef}
+          />
 
-      <DialogActions>
-        <Button
-          onClick={(e) => {
-            e.preventDefault();
-            handleLogin(inputEmail);
-          }}
-          disabled={loading}
-        >
-          {loading ? <span>Loading</span> : <span>전송</span>}
-        </Button>
-      </DialogActions>
+          <TextField
+            id="password2"
+            fullWidth
+            variant="standard"
+            margin="dense"
+            label="비밀번호확인"
+            type="password"
+          />
+        </DialogContent>
+
+        <DialogActions>
+          <Button type="submit" disabled={loading}>
+            {loading ? <span>Loading</span> : <span>전송</span>}
+          </Button>
+        </DialogActions>
+      </form>
     </Dialog>
   );
 };

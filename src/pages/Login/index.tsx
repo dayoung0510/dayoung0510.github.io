@@ -9,7 +9,18 @@ const Login: React.FC = () => {
 
   return (
     <FlexBoth style={{ height: '100%' }}>
-      <FlexColumn>{user ? <div>로그인되었습니다</div> : <SignIn />}</FlexColumn>
+      <FlexColumn>
+        {user ? (
+          <div>
+            <div>이미 로그인되었습니다</div>
+            <div>
+              <button type="button">로그아웃</button>
+            </div>
+          </div>
+        ) : (
+          <SignIn />
+        )}
+      </FlexColumn>
     </FlexBoth>
   );
 };
