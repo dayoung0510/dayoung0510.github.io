@@ -12,12 +12,11 @@ type DialogProps = {
   handleClose: () => void;
 };
 
-const SignUp: React.FC<DialogProps> = ({ open, handleClose }) => {
+const SignUpComponent: React.FC<DialogProps> = ({ open, handleClose }) => {
   const [loading, setLoading] = useState(false);
-  const [inputEmail, setInputEmail] = useState('');
 
-  const emailRef = useRef<HTMLDivElement>(null);
-  const passwordRef = useRef<HTMLDivElement>(null);
+  const emailRef = useRef<HTMLInputElement>(null);
+  const passwordRef = useRef<HTMLInputElement>(null);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -79,4 +78,4 @@ const SignUp: React.FC<DialogProps> = ({ open, handleClose }) => {
   );
 };
 
-export default SignUp;
+export default SignUpComponent;

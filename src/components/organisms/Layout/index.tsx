@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Route, Switch, useHistory } from 'react-router-dom';
+import { AuthContextProvider } from 'contexts/AuthContext';
 import NavBar from 'components/organisms/NavBar';
 import Home from 'pages/Home';
 import Profile from 'pages/Profile';
@@ -31,9 +32,10 @@ const LogoDiv = styled.div`
 `;
 
 const ContentDiv = styled.div`
-  width: 100%;
+  width: 80%;
   height: calc(100% - 3rem);
   padding: 1rem 2rem 3rem 2rem;
+  margin: 0 auto;
 `;
 
 const Layout: React.FC = () => {
@@ -52,12 +54,14 @@ const Layout: React.FC = () => {
         </LogoDiv>
         <ContentDiv>
           <ThemeBorder>
-            <Switch>
-              <Route path="/home" component={Home} />
-              <Route path="/profile" exact component={Profile} />
-              <Route path="/todolist" exact component={Todolist} />
-              <Route path="/login" exact component={Login} />
-            </Switch>
+            <AuthContextProvider>
+              <Switch>
+                <Route path="/home" component={Home} />
+                <Route path="/profile" exact component={Profile} />
+                <Route path="/todolist" exact component={Todolist} />
+                <Route path="/login" exact component={Login} />
+              </Switch>
+            </AuthContextProvider>
           </ThemeBorder>
         </ContentDiv>
       </CenterDiv>

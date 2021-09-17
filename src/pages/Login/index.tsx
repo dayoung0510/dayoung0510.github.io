@@ -1,5 +1,4 @@
 import React from 'react';
-import SignUp from 'components/organisms/Auth/SignUp';
 import SignIn from 'components/organisms/Auth/SignIn';
 import { FlexBoth, FlexColumn } from 'components/atoms/commons/Divs';
 import { useAuthContext } from '../../contexts/AuthContext';
