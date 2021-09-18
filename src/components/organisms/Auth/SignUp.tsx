@@ -28,7 +28,7 @@ const SignUpComponent: React.FC<DialogProps> = ({ open, handleClose }) => {
       setLoading(true);
       const { error } = await supabase.auth.signUp({ email, password });
       if (error) {
-        alert('회원가입 요청에 실패했습니다');
+        alert('현재 새로운 관리자는 등록이 불가합니다');
         throw error;
       }
     } catch (error) {
@@ -52,6 +52,7 @@ const SignUpComponent: React.FC<DialogProps> = ({ open, handleClose }) => {
             variant="standard"
             margin="dense"
             label="이메일주소"
+            required
             inputRef={emailRef}
           />
           <TextField
@@ -59,8 +60,9 @@ const SignUpComponent: React.FC<DialogProps> = ({ open, handleClose }) => {
             fullWidth
             variant="standard"
             margin="dense"
-            label="비밀번호"
+            label="비밀번호(12자리 이상, 영문 대소문자, 특수문자 포함 필수)"
             type="password"
+            required
             inputRef={passwordRef}
           />
 
@@ -69,7 +71,8 @@ const SignUpComponent: React.FC<DialogProps> = ({ open, handleClose }) => {
             fullWidth
             variant="standard"
             margin="dense"
-            label="비밀번호확인"
+            required
+            label="비밀번호확인(12자리 이상, 영문 대소문자, 특수문자 포함 필수)"
             type="password"
           />
         </DialogContent>
