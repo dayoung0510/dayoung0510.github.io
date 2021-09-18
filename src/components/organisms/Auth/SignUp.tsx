@@ -20,11 +20,17 @@ const SignUpComponent: React.FC<DialogProps> = ({ open, handleClose }) => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    const email = emailRef.current?.value;
+    const password = passwordRef.current?.value;
+
     try {
       setLoading(true);
-      const { error } = await supabase.auth.signUp({});
-      if (error) throw error;
-      alert('요청에 실패했습니다');
+      const { error } = await supabase.auth.signUp({ email, password });
+      if (error) {
+        alert('회원가입 요청에 실패했습니다');
+        throw error;
+      }
     } catch (error) {
       if (error instanceof Error) {
         alert(error.message);
@@ -46,7 +52,7 @@ const SignUpComponent: React.FC<DialogProps> = ({ open, handleClose }) => {
             variant="standard"
             margin="dense"
             label="이메일주소"
-            ref={emailRef}
+            inputRef={emailRef}
           />
           <TextField
             id="password"
@@ -55,7 +61,7 @@ const SignUpComponent: React.FC<DialogProps> = ({ open, handleClose }) => {
             margin="dense"
             label="비밀번호"
             type="password"
-            ref={passwordRef}
+            inputRef={passwordRef}
           />
 
           <TextField
