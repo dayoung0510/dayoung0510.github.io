@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { User } from '@supabase/supabase-js';
-import { supabase } from '../supabaseClient';
+import { supabase } from 'supabaseClient';
 
 type AuthContextProps = {
   user: User | null;
@@ -8,7 +8,9 @@ type AuthContextProps = {
 
 const AuthContext = createContext<AuthContextProps>({ user: null });
 
-export const useAuthContext = () => useContext(AuthContext);
+export const useAuthContext = () => {
+  return useContext(AuthContext);
+};
 
 export const AuthContextProvider: React.FC = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);

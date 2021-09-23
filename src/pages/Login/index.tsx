@@ -2,7 +2,7 @@ import React from 'react';
 import SignIn from 'components/organisms/Auth/SignIn';
 import { supabase } from 'supabaseClient';
 import { FlexBoth, FlexColumn } from 'components/atoms/commons/Divs';
-import { useAuthContext } from '../../contexts/AuthContext';
+import { useAuthContext } from 'contexts/AuthContext';
 
 const Login: React.FC = () => {
   const { user } = useAuthContext();

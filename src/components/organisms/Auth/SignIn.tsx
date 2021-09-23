@@ -59,7 +59,7 @@ const SignIn: React.FC = () => {
         <button type="submit">로그인</button>
       </form>
       <button type="button" onClick={() => setOpen(true)}>
-        관리자등록
+        관리자등록요청
       </button>
 
       <SignUp open={open} handleClose={handleOpenToggle(false)} />
