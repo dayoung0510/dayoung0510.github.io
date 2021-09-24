@@ -5,6 +5,7 @@ import Monthly from 'components/organisms/Todolist/Monthly';
 import BucketList from 'components/organisms/Todolist/BucketList';
 import CoreValues from 'components/organisms/Todolist/CoreValues';
 import { useAuthContext } from 'contexts/AuthContext';
+import { TabButton, TabPanel, ButtonBar } from 'components/atoms/todoList/Tabs';
 
 type TabArray = {
   name: string;
@@ -34,18 +35,14 @@ const Todolist: React.FC = () => {
 
   return (
     <div style={{ height: '100%' }}>
-      <div>
+      <ButtonBar>
         {contents.map((item, idx) => {
           return (
-            <button type="button" onClick={() => changeItem(idx)}>
-              {item.name}
-            </button>
+            <TabButton onClick={() => changeItem(idx)}>{item.name}</TabButton>
           );
         })}
-      </div>
-      <div style={{ padding: '2rem', border: '1px solid gray', height: '90%' }}>
-        {currentItem.component}
-      </div>
+      </ButtonBar>
+      <TabPanel>{currentItem.component}</TabPanel>
     </div>
   );
 };
