@@ -56,3 +56,14 @@
   font-weight: normal;
   font-style: normal;
 }
+
+/* kopup batang (only bold) */
+@font-face {
+  font-family: 'batang';
+  font-style: 'bold';
+  font-weight: 800;
+  src: url(assets/fonts/kopup-batang/KoPub-Batang-Bold.woff) format('woff'),
+    url(assets/fonts/kopup-batang/KoPub-Batang-Bold.ttf) format('truetype');
+  src: local(※),
+    url(assets/fonts/kopup-batang/KoPub-Batang-Bold.woff) format('woff');
+}

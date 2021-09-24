@@ -14,6 +14,7 @@ ${reset}
   html,
   body {
     background: ${({ theme }) => theme.bgColor};
+    background-image: ${({ theme }) => theme.bgImg};
     color: ${({ theme }) => theme.text};
     font-family: 'spoqa', sans-serif;
     font-weight: 400;

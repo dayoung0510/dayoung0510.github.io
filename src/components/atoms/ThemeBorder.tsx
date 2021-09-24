@@ -16,7 +16,9 @@ const selectThemeBorder = (theme: string) => {
 
     case 'vintageUSA':
       return css`
-        border: 1px solid red;
+        border: 2rem solid #469bb0;
+        border-radius: 4rem;
+        background-color: #f2f2f2;
       `;
 
     default:

@@ -1,13 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Route, Switch, useHistory } from 'react-router-dom';
-import { AuthContextProvider, useAuthContext } from 'contexts/AuthContext';
+import { useAuthContext } from 'contexts/AuthContext';
 import NavBar from 'components/organisms/NavBar';
 import Home from 'pages/Home';
 import Profile from 'pages/Profile';
 import Todolist from 'pages/Todolist';
 import Login from 'pages/Login';
 import ThemeBorder from 'components/atoms/ThemeBorder';
+import { AdminText, BorderBatang } from 'components/atoms/commons/Texts';
 import ThingsLogo2 from 'assets/images/things_logo2.png';
 
 const CenterDiv = styled.div`
@@ -18,7 +19,7 @@ const CenterDiv = styled.div`
 `;
 
 const LogoDiv = styled.div`
-  width: 50%;
+  width: fit-content;
   height: 4rem;
   padding-top: 1rem;
   display: flex;
@@ -30,12 +31,6 @@ const LogoDiv = styled.div`
     width: auto;
     height: 60%;
   }
-`;
-const AdminText = styled.div`
-  position: absolute;
-  bottom: 1rem;
-  right: 1rem;
-  color: #ccc;
 `;
 
 const ContentDiv = styled.div`
@@ -55,7 +50,8 @@ const Layout: React.FC = () => {
 
       <CenterDiv>
         <LogoDiv onClick={() => history.push('/home')}>
-          <img src={ThingsLogo2} alt="" />
+          {/* <img src={ThingsLogo2} alt="" /> */}
+          <BorderBatang>하면하지</BorderBatang>
         </LogoDiv>
         <ContentDiv>
           <ThemeBorder>
