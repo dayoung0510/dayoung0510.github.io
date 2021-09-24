@@ -4,7 +4,8 @@ import Doit from 'assets/images/doit.png';
 const Home: React.FC = () => {
   return (
     <div>
-      <img src={Doit} alt="" />
+      main
+      {/* <img src={Doit} alt="" /> */}
     </div>
   );
 };

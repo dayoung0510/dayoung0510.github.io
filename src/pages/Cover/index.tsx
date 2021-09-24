@@ -73,9 +73,7 @@ const Cover: React.FC = () => {
       </ArrowDiv>
 
       <CenterDiv stage={state}>
-        <CircleButton onClick={() => history.push('/home')}>
-          {BackgroundImgs[state].title}
-        </CircleButton>
+        <CircleButton onClick={() => history.push('/home')}>enter</CircleButton>
       </CenterDiv>
 
       <ArrowDiv style={{ right: 0 }}>

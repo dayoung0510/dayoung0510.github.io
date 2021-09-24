@@ -50,8 +50,8 @@ const Layout: React.FC = () => {
 
       <CenterDiv>
         <LogoDiv onClick={() => history.push('/home')}>
-          {/* <img src={ThingsLogo2} alt="" /> */}
-          <BorderBatang>하면하지</BorderBatang>
+          <img src={ThingsLogo2} alt="" />
+          {/* <BorderBatang>하면하지</BorderBatang> */}
         </LogoDiv>
         <ContentDiv>
           <ThemeBorder>
