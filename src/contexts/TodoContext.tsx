@@ -1,8 +1,9 @@
 import React, { createContext, useContext, useReducer } from 'react';
+import { supabase } from 'supabaseClient';
 
-type StateType = { name: string };
+type StateType = { catTitle: string };
 
-const defaultState: StateType = { name: '' };
+const defaultState: StateType = { catTitle: '' };
 
 const TodoContext = createContext<{
   state: StateType;
@@ -11,18 +12,34 @@ const TodoContext = createContext<{
 
 export const useTodoContext = () => useContext(TodoContext);
 
-type ActionType = { type: 'CREATE_CAT'; name: string } | { type: 'INITIALIZE' };
+type ActionType =
+  | { type: 'CREATE_CAT'; catTitle: string }
+  | { type: 'INITIALIZE' };
 
 const reducer = (state: StateType, action: ActionType) => {
-  const { name } = state;
   switch (action.type) {
-    case 'INITIALIZE':
+    case 'INITIALIZE': {
       return { ...state };
+    }
 
-    case 'CREATE_CAT':
-      alert(name);
+    case 'CREATE_CAT': {
+      const { catTitle: title } = action;
+      const createCategory = async () => {
+        try {
+          const { error } = await supabase
+            .from('categories')
+            .insert({ title }, { returning: 'minimal' });
+
+          if (error) {
+            throw new Error('Err!');
+          }
+        } catch (error) {
+          alert(error);
+        }
+      };
+      createCategory();
       return { ...state };
-
+    }
     default: {
       return state;
     }

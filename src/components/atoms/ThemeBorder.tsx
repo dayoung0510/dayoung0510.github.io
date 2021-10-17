@@ -29,7 +29,7 @@ const selectThemeBorder = (theme: string) => {
 const Border = styled.div<{ themeBorder: string }>`
   width: 100%;
   height: 100%;
-  padding: 2rem 4rem;
+  padding: 2rem;
 
   ${({ themeBorder }) => selectThemeBorder(themeBorder)}
 `;
