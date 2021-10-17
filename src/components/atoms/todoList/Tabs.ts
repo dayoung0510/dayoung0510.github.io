@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const ButtonBar = styled.div`
-  height: 3rem;
   background-color: red;
   display: flex;
   align-items: flex-end;
@@ -16,5 +15,5 @@ export const TabButton = styled.button`
 export const TabPanel = styled.div`
   background-color: #fff;
   padding: 1rem;
-  height: calc(100% - 3rem);
+  height: calc(100% - 2rem);
 `;

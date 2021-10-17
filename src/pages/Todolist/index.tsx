@@ -13,11 +13,11 @@ type TabArray = {
 };
 
 const contents = [
-  { name: '위클리', component: <Weekly /> },
-  { name: '먼슬리', component: <Monthly /> },
-  { name: '이얼리', component: <Yearly /> },
-  { name: '버킷리스트', component: <BucketList /> },
-  { name: '코어밸류', component: <CoreValues /> },
+  { idx: 0, name: '위클리', component: <Weekly /> },
+  { idx: 1, name: '먼슬리', component: <Monthly /> },
+  { idx: 2, name: '이얼리', component: <Yearly /> },
+  { idx: 3, name: '버킷리스트', component: <BucketList /> },
+  { idx: 4, name: '코어밸류', component: <CoreValues /> },
 ];
 
 const useTabs = (initialTab: number, allTabs: TabArray[]) => {
@@ -38,7 +38,9 @@ const Todolist: React.FC = () => {
       <ButtonBar>
         {contents.map((item, idx) => {
           return (
-            <TabButton onClick={() => changeItem(idx)}>{item.name}</TabButton>
+            <TabButton key={item.idx} onClick={() => changeItem(idx)}>
+              {item.name}
+            </TabButton>
           );
         })}
       </ButtonBar>

@@ -52,7 +52,7 @@ export const defaultValue = {
   tertiary: '',
 };
 export const BackgroundImgs = [
-  { type: 'pic', src: First, title: 'vintageUSA', theme: vintageUSA },
   { type: 'pic', src: Seoul1991, title: 'cartoonNight', theme: cartoonNight },
+  { type: 'pic', src: First, title: 'vintageUSA', theme: vintageUSA },
   { type: 'video', src: TreeVideo, title: 'tree ', theme: tree },
 ];

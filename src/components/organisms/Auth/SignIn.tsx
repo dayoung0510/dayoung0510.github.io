@@ -23,11 +23,13 @@ const SignIn: React.FC = () => {
       const { error } = await supabase.auth.signIn({ email, password });
       if (error) {
         alert('유효하지 않은 아이디 또는 패스워드입니다');
+        setLoading(false);
         throw error;
       }
     } catch (error) {
       if (error instanceof Error) {
         alert(error.message);
+        setLoading(false);
       }
     } finally {
       setLoading(false);

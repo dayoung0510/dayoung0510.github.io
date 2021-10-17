@@ -37,6 +37,7 @@ const SignUpComponent: React.FC<DialogProps> = ({ open, handleClose }) => {
       }
     } finally {
       setLoading(false);
+      alert('이메일을 확인해주세요.');
       handleClose();
     }
   };
