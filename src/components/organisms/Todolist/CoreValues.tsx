@@ -1,8 +1,6 @@
 import React from 'react';
-import { useAuthContext } from 'contexts/AuthContext';
 
 const CoreValues: React.FC = () => {
-  const { user } = useAuthContext();
   return (
     <div
       style={{
@@ -13,7 +11,7 @@ const CoreValues: React.FC = () => {
         alignItems: 'center',
       }}
     >
-      {user ? <>코어밸류</> : <>관리자만 접근 가능합니다</>}
+      <>코어밸류</>
     </div>
   );
 };

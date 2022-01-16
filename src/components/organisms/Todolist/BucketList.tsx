@@ -1,9 +1,6 @@
 import React from 'react';
-import { useAuthContext } from 'contexts/AuthContext';
 
 const BucketList: React.FC = () => {
-  const { user } = useAuthContext();
-
   return (
     <div
       style={{
@@ -14,7 +11,7 @@ const BucketList: React.FC = () => {
         alignItems: 'center',
       }}
     >
-      {user ? <>버킷리스트</> : <>관리자만 접근 가능합니다</>}
+      <>버킷리스트</>
     </div>
   );
 };

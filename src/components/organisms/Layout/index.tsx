@@ -1,14 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Route, Switch, useHistory } from 'react-router-dom';
-import { useAuthContext } from 'contexts/AuthContext';
 import NavBar from 'components/organisms/NavBar';
 import Home from 'pages/Home';
 import Profile from 'pages/Profile';
 import Todolist from 'pages/Todolist';
 import Login from 'pages/Login';
 import ThemeBorder from 'components/atoms/ThemeBorder';
-import { AdminText, BorderBatang } from 'components/atoms/commons/Texts';
+import { BorderBatang } from 'components/atoms/commons/Texts';
 import ThingsLogo2 from 'assets/images/things_logo2.png';
 
 const CenterDiv = styled.div`
@@ -42,7 +41,6 @@ const ContentDiv = styled.div`
 
 const Layout: React.FC = () => {
   const history = useHistory();
-  const { user } = useAuthContext();
 
   return (
     <>
@@ -64,7 +62,6 @@ const Layout: React.FC = () => {
           </ThemeBorder>
         </ContentDiv>
       </CenterDiv>
-      <AdminText>{user && user.email}</AdminText>
     </>
   );
 };

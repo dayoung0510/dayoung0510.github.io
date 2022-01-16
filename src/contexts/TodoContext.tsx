@@ -1,5 +1,4 @@
 import React, { createContext, useContext, useReducer } from 'react';
-import { supabase } from 'supabaseClient';
 
 type StateType = { catTitle: string };
 
@@ -23,21 +22,7 @@ const reducer = (state: StateType, action: ActionType) => {
     }
 
     case 'CREATE_CAT': {
-      const { catTitle: title } = action;
-      const createCategory = async () => {
-        try {
-          const { error } = await supabase
-            .from('categories')
-            .insert({ title }, { returning: 'minimal' });
-
-          if (error) {
-            throw new Error('Err!');
-          }
-        } catch (error) {
-          alert(error);
-        }
-      };
-      createCategory();
+      console.log('카테고리 만들기');
       return { ...state };
     }
     default: {

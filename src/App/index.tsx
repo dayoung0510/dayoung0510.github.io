@@ -1,7 +1,5 @@
 import React, { createContext } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import { AuthContextProvider } from 'contexts/AuthContext';
-
 import GlobalStyle from 'styles/globalStyles';
 import { Theme, defaultValue } from 'styles/theme';
 import useTheme from 'hooks/useTheme';
@@ -26,14 +24,12 @@ const App: React.FC = () => {
     <ThemeContext.Provider value={{ theme, setTheme }}>
       <GlobalStyle theme={theme} />
 
-      <AuthContextProvider>
-        <Switch>
-          <Route path="/" exact component={Cover} />
-          <Layout>
-            <Route path="/home" exact component={Home} />
-          </Layout>
-        </Switch>
-      </AuthContextProvider>
+      <Switch>
+        <Route path="/" exact component={Cover} />
+        <Layout>
+          <Route path="/home" exact component={Home} />
+        </Layout>
+      </Switch>
     </ThemeContext.Provider>
   );
 };

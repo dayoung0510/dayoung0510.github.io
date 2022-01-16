@@ -1,7 +1,6 @@
 import React, { useState, useRef } from 'react';
 import TextField from '@mui/material/TextField';
 import SignUp from 'components/organisms/Auth/SignUp';
-import { supabase } from 'supabaseClient';
 
 const SignIn: React.FC = () => {
   const [open, setOpen] = useState(false);
@@ -13,27 +12,8 @@ const SignIn: React.FC = () => {
   const emailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const email = emailRef.current?.value;
-    const password = passwordRef.current?.value;
-
-    try {
-      setLoading(true);
-      const { error } = await supabase.auth.signIn({ email, password });
-      if (error) {
-        alert('유효하지 않은 아이디 또는 패스워드입니다');
-        setLoading(false);
-        throw error;
-      }
-    } catch (error) {
-      if (error instanceof Error) {
-        alert(error.message);
-        setLoading(false);
-      }
-    } finally {
-      setLoading(false);
-    }
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    alert(`제출하깅`);
   };
 
   return (
