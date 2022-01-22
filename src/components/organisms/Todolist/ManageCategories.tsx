@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useTodoContext } from '../../../contexts/TodoContext';
+import { useTodoContext } from '../../../contexts/todoContext';
 
 const ManageCategories: React.FC = () => {
   const [createCategory, setCreateCategory] = useState('');

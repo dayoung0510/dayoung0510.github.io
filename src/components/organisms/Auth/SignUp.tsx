@@ -1,4 +1,5 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useContext } from 'react';
+import { useForm } from 'react-hook-form';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
@@ -12,38 +13,35 @@ type DialogProps = {
 };
 
 const SignUpComponent: React.FC<DialogProps> = ({ open, handleClose }) => {
+  const { register, handleSubmit } = useForm();
   const [loading, setLoading] = useState(false);
 
-  const emailRef = useRef<HTMLInputElement>(null);
-  const passwordRef = useRef<HTMLInputElement>(null);
+  const [email, setEmail] = useState('');
+  const [pw, setPw] = useState('');
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    alert('제출~');
-  };
+  const onSubmit = () => {};
 
   return (
     <Dialog open={open} onClose={handleClose} maxWidth="xs">
-      <form onSubmit={handleSubmit}>
+      <form>
         <DialogTitle>관리자 등록 요청</DialogTitle>
         <DialogContent>
           <TextField
-            id="email"
             fullWidth
             variant="standard"
             margin="dense"
             label="이메일주소"
             required
-            inputRef={emailRef}
+            onChange={(e) => setEmail(e.target.value)}
           />
           <TextField
-            id="password"
             fullWidth
             variant="standard"
             margin="dense"
             label="비밀번호(12자리 이상, 영문 대소문자, 특수문자 포함 필수)"
             type="password"
             required
-            inputRef={passwordRef}
+            onChange={(e) => setPw(e.target.value)}
           />
 
           <TextField
@@ -58,7 +56,7 @@ const SignUpComponent: React.FC<DialogProps> = ({ open, handleClose }) => {
         </DialogContent>
 
         <DialogActions>
-          <Button type="submit" disabled={loading}>
+          <Button type="button" disabled={loading} onClick={onSubmit}>
             {loading ? <span>Loading</span> : <span>전송</span>}
           </Button>
         </DialogActions>

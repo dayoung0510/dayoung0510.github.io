@@ -23,7 +23,6 @@ const App: React.FC = () => {
   return (
     <ThemeContext.Provider value={{ theme, setTheme }}>
       <GlobalStyle theme={theme} />
-
       <Switch>
         <Route path="/" exact component={Cover} />
         <Layout>
