@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { useAuth } from 'contexts/authContext';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
@@ -21,9 +20,6 @@ const SignUpComponent: React.FC<DialogProps> = ({ open, handleClose }) => {
   const [pw, setPw] = useState('');
 
   const onSubmit = () => {};
-
-  const user = useAuth();
-  console.log(user, '!!');
 
   return (
     <Dialog open={open} onClose={handleClose} maxWidth="xs">
