@@ -6,6 +6,7 @@ import useTheme from 'hooks/useTheme';
 import Cover from 'pages/Cover';
 import Layout from 'components/organisms/Layout';
 import Home from 'pages/Home';
+import { AuthProvider } from 'contexts/AuthContext';
 
 interface ContextProps {
   theme: Theme;
@@ -22,13 +23,15 @@ const App: React.FC = () => {
 
   return (
     <ThemeContext.Provider value={{ theme, setTheme }}>
-      <GlobalStyle theme={theme} />
-      <Switch>
-        <Route path="/" exact component={Cover} />
-        <Layout>
-          <Route path="/home" exact component={Home} />
-        </Layout>
-      </Switch>
+      <AuthProvider>
+        <GlobalStyle theme={theme} />
+        <Switch>
+          <Route path="/" exact component={Cover} />
+          <Layout>
+            <Route path="/home" exact component={Home} />
+          </Layout>
+        </Switch>
+      </AuthProvider>
     </ThemeContext.Provider>
   );
 };

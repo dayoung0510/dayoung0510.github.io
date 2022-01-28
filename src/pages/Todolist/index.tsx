@@ -1,5 +1,5 @@
 import React from 'react';
-import TodoContextProvider from 'contexts/todoContext';
+import TodoContextProvider from 'contexts/TodoContext';
 import TodoPanel from 'components/organisms/Todolist/TodoPanel';
 
 const Todolist: React.FC = () => {
