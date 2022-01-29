@@ -6,6 +6,7 @@ import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
+import { useAuth } from 'contexts/AuthContext';
 
 type DialogProps = {
   open: boolean;
@@ -13,17 +14,21 @@ type DialogProps = {
 };
 
 const SignUpComponent: React.FC<DialogProps> = ({ open, handleClose }) => {
-  const { register, handleSubmit } = useForm();
+  const { signUp } = useAuth();
+
   const [loading, setLoading] = useState(false);
 
   const [email, setEmail] = useState('');
   const [pw, setPw] = useState('');
 
-  const onSubmit = () => {};
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    signUp(email, pw);
+  };
 
   return (
     <Dialog open={open} onClose={handleClose} maxWidth="xs">
-      <form>
+      <form onSubmit={handleSubmit}>
         <DialogTitle>관리자 등록 요청</DialogTitle>
         <DialogContent>
           <TextField
@@ -56,7 +61,7 @@ const SignUpComponent: React.FC<DialogProps> = ({ open, handleClose }) => {
         </DialogContent>
 
         <DialogActions>
-          <Button type="button" disabled={loading} onClick={onSubmit}>
+          <Button type="submit">
             {loading ? <span>Loading</span> : <span>전송</span>}
           </Button>
         </DialogActions>

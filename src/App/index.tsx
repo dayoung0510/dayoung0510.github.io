@@ -6,7 +6,7 @@ import useTheme from 'hooks/useTheme';
 import Cover from 'pages/Cover';
 import Layout from 'components/organisms/Layout';
 import Home from 'pages/Home';
-import { AuthProvider } from 'contexts/authContext';
+import { AuthProvider } from 'contexts/AuthContext';
 
 interface ContextProps {
   theme: Theme;
