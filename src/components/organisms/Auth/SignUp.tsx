@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { useForm } from 'react-hook-form';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
@@ -13,22 +13,47 @@ type DialogProps = {
   handleClose: () => void;
 };
 
+type SignUpFormData = {
+  email: string;
+  password: string;
+  passwordCheck: string;
+};
+
 const SignUpComponent: React.FC<DialogProps> = ({ open, handleClose }) => {
   const { signUp } = useAuth();
 
   const [loading, setLoading] = useState(false);
 
-  const [email, setEmail] = useState('');
-  const [pw, setPw] = useState('');
+  const {
+    handleSubmit,
+    register,
+    watch,
+    getValues,
+    formState: { errors },
+  } = useForm<SignUpFormData>({
+    mode: 'onChange',
+  });
+  watch('password');
+  const { password: watchedPassword } = getValues();
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    signUp(email, pw);
-  };
+  // const [email, setEmail] = useState('');
+  // const [pw, setPw] = useState('');
+
+  // const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  //   e.preventDefault();
+  //   signUp(email, pw);
+  // };
+
+  const onSubmit = useCallback(
+    async ({ email, password }: SignUpFormData) => {
+      await signUp(email, password);
+    },
+    [signUp],
+  );
 
   return (
     <Dialog open={open} onClose={handleClose} maxWidth="xs">
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <DialogTitle>관리자 등록 요청</DialogTitle>
         <DialogContent>
           <TextField
@@ -37,16 +62,16 @@ const SignUpComponent: React.FC<DialogProps> = ({ open, handleClose }) => {
             margin="dense"
             label="이메일주소"
             required
-            onChange={(e) => setEmail(e.target.value)}
+            {...register('email')}
           />
           <TextField
             fullWidth
             variant="standard"
             margin="dense"
-            label="비밀번호(12자리 이상, 영문 대소문자, 특수문자 포함 필수)"
+            label="비밀번호"
             type="password"
             required
-            onChange={(e) => setPw(e.target.value)}
+            {...register('password')}
           />
 
           <TextField
@@ -55,9 +80,14 @@ const SignUpComponent: React.FC<DialogProps> = ({ open, handleClose }) => {
             variant="standard"
             margin="dense"
             required
-            label="비밀번호확인(12자리 이상, 영문 대소문자, 특수문자 포함 필수)"
+            label="비밀번호확인"
             type="password"
+            {...register('passwordCheck', {
+              validate: (value) =>
+                value === watchedPassword || '비밀번호가 일치하지 않습니다',
+            })}
           />
+          {errors.passwordCheck && <div>{errors.passwordCheck.message}</div>}
         </DialogContent>
 
         <DialogActions>
