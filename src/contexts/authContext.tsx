@@ -35,12 +35,14 @@ export const AuthProvider: React.FC = ({ children }) => {
   const [user, setUser] = useState<FirebaseUser | null>(null);
 
   const logIn = (email: string, password: string) => {
+    console.log(email, password);
     return signInWithEmailAndPassword(auth, email, password);
   };
   const signUp = (email: string, password: string) => {
     return createUserWithEmailAndPassword(auth, email, password);
   };
   const logOut = () => {
+    alert('로그아웃 되었습니다.');
     return signOut(auth);
   };
 
