@@ -39,7 +39,9 @@ export const AuthProvider: React.FC = ({ children }) => {
     return signInWithEmailAndPassword(auth, email, password);
   };
   const signUp = (email: string, password: string) => {
-    return createUserWithEmailAndPassword(auth, email, password);
+    return createUserWithEmailAndPassword(auth, email, password)
+      .then(() => alert('회원가입 성공'))
+      .catch((error) => alert(error));
   };
   const logOut = () => {
     alert('로그아웃 되었습니다.');

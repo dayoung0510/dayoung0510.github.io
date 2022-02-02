@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import { useForm } from 'react-hook-form';
-import Button from '@mui/material/Button';
+import Button from 'components/atoms/commons/Button';
 import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
@@ -22,34 +22,21 @@ type SignUpFormData = {
 const SignUpComponent: React.FC<DialogProps> = ({ open, handleClose }) => {
   const { signUp } = useAuth();
 
-  const [loading, setLoading] = useState(false);
-
   const {
     handleSubmit,
     register,
     watch,
     getValues,
-    formState: { errors },
+    formState: { errors, isValid },
   } = useForm<SignUpFormData>({
     mode: 'onChange',
   });
   watch('password');
   const { password: watchedPassword } = getValues();
 
-  // const [email, setEmail] = useState('');
-  // const [pw, setPw] = useState('');
-
-  // const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-  //   e.preventDefault();
-  //   signUp(email, pw);
-  // };
-
-  const onSubmit = useCallback(
-    async ({ email, password }: SignUpFormData) => {
-      await signUp(email, password);
-    },
-    [signUp],
-  );
+  const onSubmit = ({ email, password }: SignUpFormData) => {
+    signUp(email, password);
+  };
 
   return (
     <Dialog open={open} onClose={handleClose} maxWidth="xs">
@@ -91,8 +78,8 @@ const SignUpComponent: React.FC<DialogProps> = ({ open, handleClose }) => {
         </DialogContent>
 
         <DialogActions>
-          <Button type="submit">
-            {loading ? <span>Loading</span> : <span>전송</span>}
+          <Button type="submit" disabled={!isValid}>
+            전송
           </Button>
         </DialogActions>
       </form>
